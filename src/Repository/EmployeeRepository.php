@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Employé;
+use App\Entity\Employee;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -10,21 +10,21 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
 /**
- * @extends ServiceEntityRepository<Employé>
+ * @extends ServiceEntityRepository<Employee>
  *
- * @method Employé|null find($id, $lockMode = null, $lockVersion = null)
- * @method Employé|null findOneBy(array $criteria, array $orderBy = null)
- * @method Employé[]    findAll()
- * @method Employé[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Employee|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Employee|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Employee[]    findAll()
+ * @method Employee[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EmployéRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class EmployeeRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Employé::class);
+        parent::__construct($registry, Employee::class);
     }
 
-    public function save(Employé $entity, bool $flush = false): void
+    public function save(Employee $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -33,7 +33,7 @@ class EmployéRepository extends ServiceEntityRepository implements PasswordUpgr
         }
     }
 
-    public function remove(Employé $entity, bool $flush = false): void
+    public function remove(Employee $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -47,7 +47,7 @@ class EmployéRepository extends ServiceEntityRepository implements PasswordUpgr
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
-        if (!$user instanceof Employé) {
+        if (!$user instanceof Employee) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
         }
 
@@ -57,7 +57,7 @@ class EmployéRepository extends ServiceEntityRepository implements PasswordUpgr
     }
 
 //    /**
-//     * @return Employé[] Returns an array of Employé objects
+//     * @return Employee[] Returns an array of Employee objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -71,7 +71,7 @@ class EmployéRepository extends ServiceEntityRepository implements PasswordUpgr
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Employé
+//    public function findOneBySomeField($value): ?Employee
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EmployéRepository;
+use App\Repository\EmployeeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: EmployéRepository::class)]
-class Employé implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: EmployeeRepository::class)]
+class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
