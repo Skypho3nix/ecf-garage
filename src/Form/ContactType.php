@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +19,7 @@ class ContactType extends AbstractType
             ->add('Prénom')
             ->add('Email', EmailType::class)
             ->add('Téléphone')
-            ->add('Message', TexteType::class)
+            ->add('Message', TextType::class)
             ->add('Envoyer', SubmitType::Class)
         ;
     }

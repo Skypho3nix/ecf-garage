@@ -8,10 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
+    
     #[Route('/contact', name: 'app_contact')]
     public function index(): Response
     {
-        $form=$this->createForm(contactType::class);
+        $form=$this->createForm(ContactType::class);
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'ContactController',
             'formulaire' => $form
